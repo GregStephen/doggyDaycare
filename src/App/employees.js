@@ -17,7 +17,7 @@ const employees = [
     id: 'employee3',
     name: 'Honey',
     position: 'Walker',
-    yearsEmployed: 1,
+    yearsEmployed: 2,
     imageUrl: 'https://media.licdn.com/dms/image/C4D03AQHCuXILD8518g/profile-displayphoto-shrink_800_800/0?e=1566432000&v=beta&t=lOugJ0A2QQ0vRfkLql0-V6JLW-srwlnYXgwhpvUluvU',
   },
   {
@@ -26,6 +26,13 @@ const employees = [
     position: 'Cashier',
     yearsEmployed: 5,
     imageUrl: 'https://media.licdn.com/dms/image/C4E03AQFrSgzoG-8yGg/profile-displayphoto-shrink_800_800/0?e=1566432000&v=beta&t=fIMzoz479yNJp1JilCndx9z_osGRghQucoPdu1VvPfw',
+  },
+  {
+    id: 'employee5',
+    name: 'Wayne',
+    position: 'Poop Picker Upper',
+    yearsEmployed: 12,
+    imageUrl: 'https://media.licdn.com/dms/image/C4E03AQFdiiDKGlzlAg/profile-displayphoto-shrink_800_800/0?e=1566432000&v=beta&t=MNPVs5t5BQ7v2hCz545bC8dT4cf7WLK0NQNSbuArVss',
   },
 ];
 
