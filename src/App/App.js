@@ -1,20 +1,23 @@
 import React from 'react';
 
+import myDogs from './dogs';
+import DogPen from '../components/DogPen/DogPen';
 import './App.scss';
 
 class App extends React.Component {
-  // state = {
-  //   dogs: [],
-  // }
+  state = {
+    dogs: [],
+  }
 
-  // componentDidMount() {
-  //   this.setState({ dogs: myDogs });
-  // }
+  componentDidMount() {
+    this.setState({ dogs: myDogs });
+  }
 
   render() {
+    const { dogs } = this.state;
     return (
       <div className="App">
-        <button className="btn btn-danger">HELP</button>
+        <DogPen dogs={ dogs } />
       </div>
     );
   }
