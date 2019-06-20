@@ -13,13 +13,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ dogs: myDogs });
-    this.setState({ employees: myEmployees });
+    this.setState({ dogs: myDogs, employees: myEmployees });
   }
 
   render() {
-    const { dogs } = this.state;
-    const { employees } = this.state;
+    const { dogs, employees } = this.state;
     return (
       <div className="App">
         <div>
