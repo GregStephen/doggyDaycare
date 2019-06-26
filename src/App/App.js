@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import Navbar from '../components/Navbar/Navbar';
 import Home from '../components/Home/Home';
 import Auth from '../components/Auth/Auth';
 import connection from '../helpers/data/connection';
@@ -39,6 +40,7 @@ class App extends React.Component {
     };
     return (
       <div className="App">
+        <Navbar authed={authed} />
        {loadComponent()}
       </div>
     );
