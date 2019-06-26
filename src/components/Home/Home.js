@@ -1,8 +1,8 @@
 import React from 'react';
 
-import myDogs from '../../App/dogs';
+import dogData from '../../helpers/data/dogData';
 import DogPen from '../DogPen/DogPen';
-import myEmployees from '../../App/employees';
+import employeeData from '../../helpers/data/employeeData';
 import Breakroom from '../Breakroom/Breakroom';
 
 import './Home.scss';
@@ -14,7 +14,12 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ dogs: myDogs, employees: myEmployees });
+    dogData.getDogs()
+      .then(dogs => this.setState({ dogs }))
+      .catch(err => console.error('could not get dogs', err));
+    employeeData.getEmployees()
+      .then(employees => this.setState({ employees }))
+      .catch(err => console.error('could not get employees', err));
   }
 
   render() {

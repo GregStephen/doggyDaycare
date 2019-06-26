@@ -1,0 +1,47 @@
+{
+  "doggo1": {
+    "name": "Honey",
+    "color": "Chestnut and White",
+    "breed": "Bassett Hound",
+    "sex": "F",
+    "imageUrl": "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/64401426_10219115851917349_6508422221487144960_o.jpg?_nc_cat=111&_nc_oc=AQkVoNA4gF6TzP_aJeZ7qDpQ2zLulsaxkOCNq74E3F9iqMz88MCwGL7McZXVVBF2bD0&_nc_ht=scontent-atl3-1.xx&oh=9e6781d6c7a6a79386e5e02b486a675a&oe=5D9413AD",
+    "age": 1,
+    "isHouseBroken": true
+  },
+  "doggo2": {
+    "name": "Banana",
+    "color": "Brown, Black and White",
+    "breed": "Akita",
+    "sex": "M",
+    "imageUrl": "https://cdn3-www.dogtime.com/assets/uploads/gallery/akita-dogs-and-puppies/akita-dogs-puppies-6.jpg",
+    "age": 2,
+    "isHouseBroken": true
+  },
+  "doggo3": {
+    "name": "Ralph",
+    "color": "Black and White",
+    "breed": "Dalmation",
+    "sex": "M",
+    "imageUrl": "https://cdn2-www.dogtime.com/assets/uploads/gallery/dalmatian-dog-breed-pictures/8-firetruck.jpg",
+    "age": 2,
+    "isHouseBroken": false
+  },
+  "doggo4": {
+    "name": "Pudding",
+    "color": "Brown",
+    "breed": "Dachshund",
+    "sex": "F",
+    "imageUrl": "https://cdn2-www.dogtime.com/assets/uploads/gallery/dachshund-dog-breed-pictures/side-5_680-453.jpg",
+    "age": 8,
+    "isHouseBroken": true
+  },
+  "doggo5": {
+    "name": "Bernie",
+    "color": "White and Brown",
+    "breed": "Saint Bernard",
+    "sex": "M",
+    "imageUrl": "https://cdn1-www.dogtime.com/assets/uploads/gallery/saint-bernard-dogs-and-puppies/saint-bernard-dogs-puppies-10.jpg",
+    "age": 4,
+    "isHouseBroken": true
+  }
+}
