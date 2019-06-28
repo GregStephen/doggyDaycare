@@ -6,7 +6,7 @@ import './Employee.scss';
 
 class Employee extends React.Component {
   static propTypes = {
-    employee: employeeShape.employeeShape,
+    employee: employeeShape,
   }
 
   render() {
