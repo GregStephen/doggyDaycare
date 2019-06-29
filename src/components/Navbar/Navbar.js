@@ -20,11 +20,10 @@ class Navbar extends React.Component {
   showWalks = (e) => {
     e.preventDefault();
     $('.Pages').toggleClass('hide');
-    console.error($('.walks-button').text());
     if ($('.walks-button').text() === 'Walks') {
-      $('.walks-button').text = 'Home';
+      $('.walks-button').text('Home');
     } else {
-      $('.walks-button').text = 'Walks';
+      $('.walks-button').text('Walks');
     }
   }
 
