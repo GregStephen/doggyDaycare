@@ -23,7 +23,9 @@ class Walk extends React.Component {
         <h2 className="card-title">{date}</h2>
         <h4>{time}</h4>
         <ul className="list-group list-group-flush">
+          <li className="list-group-item"><img className="walk-employee-image"src={walk.employeeImage} alt={walk.employeeName}></img></li>
           <li className="list-group-item">{walk.employeeName} is walking: </li>
+          <li className="list-group-item"><img className="walk-doggo-image"src={walk.doggoImage} alt={walk.doggoName}></img></li>
           <li className="list-group-item">{walk.doggoName}</li>
         </ul>
        </div>
