@@ -1,4 +1,6 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 
 import walkShape from '../../helpers/propz/walkShape';
 
@@ -9,6 +11,13 @@ const moment = require('moment');
 class Walk extends React.Component {
   static propTypes = {
     employee: walkShape,
+    deleteWalk: PropTypes.func.isRequired,
+  }
+
+  deleteWalkEvent = (e) => {
+    const { walk, deleteWalk } = this.props;
+    e.preventDefault();
+    deleteWalk(walk.id);
   }
 
   render() {
@@ -27,6 +36,7 @@ class Walk extends React.Component {
           <li className="list-group-item">{walk.employeeName} is walking: </li>
           <li className="list-group-item"><img className="walk-doggo-image"src={walk.doggoImage} alt={walk.doggoName}></img></li>
           <li className="list-group-item">{walk.doggoName}</li>
+          <li className="list-group-item"><button className="btn btn-danger" onClick={this.deleteWalkEvent}>X</button></li>
         </ul>
        </div>
       </div>

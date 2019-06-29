@@ -24,6 +24,7 @@ class Walks extends React.Component {
     employees: PropTypes.arrayOf(employeeShape),
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     addNewWalk: PropTypes.func.isRequired,
+    deleteWalk: PropTypes.func.isRequired,
   }
 
   toggle = () => {
@@ -33,10 +34,12 @@ class Walks extends React.Component {
   }
 
   render() {
-    const { walks } = this.props;
+    const {
+      walks, dogs, employees, addNewWalk,
+    } = this.props;
 
     const showWalks = walks.map(walk => (
-      <Walk key={ walk.id } walk={ walk } />
+      <Walk key={ walk.id } walk={ walk } deleteWalk={ this.props.deleteWalk }/>
     ));
 
     return (
@@ -53,7 +56,10 @@ class Walks extends React.Component {
         <div>
         <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>
         <ModalHeader toggle={this.toggle}>Add A Walk!</ModalHeader>
-          <NewWalkForm toggle={this.toggle} addNewWalk={this.props.addNewWalk}/>
+          <NewWalkForm toggle={this.toggle}
+          addNewWalk={ addNewWalk }
+          dogs={ dogs }
+          employees={ employees }/>
         </Modal>
       </div>
       </div>

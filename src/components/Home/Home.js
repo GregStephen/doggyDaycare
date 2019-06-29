@@ -46,6 +46,11 @@ class Home extends React.Component {
     this.getWalkData();
   }
 
+  deleteWalk = (walkId) => {
+    walkData.deleteWalkFromDatabase(walkId)
+      .then(() => this.getWalkData)
+      .catch(err => console.error('trouble deleting walk', err));
+  }
 
   addNewWalk = (newWalk) => {
     walkData.addNewWalkToDatabase(newWalk)
@@ -59,7 +64,7 @@ class Home extends React.Component {
       <div className="Home container">
         <DogPen dogs={ dogs }/>
         <Breakroom employees={ employees }/>
-        <Walks walks={ walks } employees={ employees } dogs={ dogs } addNewWalk={this.addNewWalk}/>
+        <Walks walks={ walks } employees={ employees } dogs={ dogs } addNewWalk={this.addNewWalk} deleteWalk={this.deleteWalk}/>
       </div>
     );
   }

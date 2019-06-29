@@ -5,11 +5,16 @@ import {
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
+import dogShapes from '../../helpers/propz/dogShape';
+import employeeShape from '../../helpers/propz/employeeShape';
+
 const moment = require('moment');
 
 class NewWalkForm extends React.Component {
   static propTypes = {
     addNewWalk: PropTypes.func.isRequired,
+    dogs: PropTypes.arrayOf(dogShapes.dogShape),
+    employees: PropTypes.arrayOf(employeeShape),
   }
 
   state = {
@@ -33,11 +38,13 @@ class NewWalkForm extends React.Component {
   handleNewWalkSubmit = (e) => {
     const { addNewWalk } = this.props;
     e.preventDefault();
-    const newDate = `${this.state.dateValue}T${this.state.timeValue}`;
+    const newDate = moment(this.state.dateValue, 'YYYY-MM-DD').format('YYYYMMDD');
+    const newTime = moment(this.state.timeValue, 'HH:mm').format('HHmm');
+    const newDateAndTime = `${newDate}T${newTime}`;
     const newWalk = {
-      doggoId: this.state.doggoValue,
+      dogId: this.state.doggoValue,
       employeeId: this.state.employeeValue,
-      dateValue: newDate,
+      date: newDateAndTime,
     };
     addNewWalk(newWalk);
     this.toggleModal();
@@ -46,19 +53,26 @@ class NewWalkForm extends React.Component {
 
   render() {
     const { dateValue, timeValue } = this.state;
+    const { dogs, employees } = this.props;
+
     return (
       <div>
       <Form onSubmit={this.handleNewWalkSubmit}>
       <ModalBody>
-
           <FormGroup>
             <Label for="doggoSelection">Select Doggo</Label>
-            <Input type="select" name="doggoValue" id="doggoSelection">
+            <Input type="select" name="doggoValue" id="doggoSelection" value={this.state.doggoValue} onChange={this.handleChange}>
+              { dogs.map(object => (
+                <option key={object.id} value={object.id}>{object.name}</option>
+              )) }
             </Input>
           </FormGroup>
           <FormGroup>
             <Label for="employeeSelection">Select Walker</Label>
-            <Input type="select" name="employeeValue" id="employeeSelection">
+            <Input type="select" name="employeeValue" id="employeeSelection" value={this.state.employeeValue} onChange={this.handleChange}>
+            { employees.map(object => (
+                <option key={object.id} value={object.id}>{object.name}</option>
+            )) }
             </Input>
           </FormGroup>
           <FormGroup>
