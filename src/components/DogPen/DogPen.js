@@ -26,7 +26,7 @@ class DogPen extends React.Component {
     ));
 
     return (
-      <div className="DogPen container">
+      <div className="DogPen container Pages">
         <h2>Check Out Our Sweet Pups</h2>
         <div className="card-columns">
           { makeDogs }

@@ -19,9 +19,7 @@ class Navbar extends React.Component {
 
   showWalks = (e) => {
     e.preventDefault();
-    $('.Walks').removeClass('hide');
-    $('.DogPen').addClass('hide');
-    $('.Breakroom').addClass('hide');
+    $('.Pages').toggleClass('hide');
   }
 
   render() {
