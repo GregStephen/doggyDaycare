@@ -1,22 +1,17 @@
 import React from 'react';
-
-import employeeData from '../../helpers/data/employeeData';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
+import employeeShape from '../../helpers/propz/employeeShape';
 import Employee from '../Employee/Employee';
 import './Breakroom.scss';
 
 class Breakroom extends React.Component {
-  state = {
-    employees: [],
-  }
-
-  componentDidMount() {
-    employeeData.getEmployees()
-      .then(employees => this.setState({ employees }))
-      .catch(err => console.error('could not get employees', err));
+  static propTypes = {
+    dogs: PropTypes.arrayOf(employeeShape),
   }
 
   render() {
-    const { employees } = this.state;
+    const { employees } = this.props;
     const makeEmployees = employees.map(employee => (
       <Employee key={ employee.id } employee={ employee } />
     ));

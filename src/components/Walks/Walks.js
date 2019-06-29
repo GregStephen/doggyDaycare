@@ -1,43 +1,67 @@
 import React from 'react';
-import walkData from '../../helpers/data/walkData';
-import employeeData from '../../helpers/data/employeeData';
-import dogData from '../../helpers/data/dogData';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
+import {
+  Modal, ModalHeader,
+} from 'reactstrap';
+
 import Walk from '../Walk/Walk';
-import SMASH from '../../helpers/smash';
 import './Walks.scss';
+
+import walkShape from '../../helpers/propz/walkShape';
+import employeeShape from '../../helpers/propz/employeeShape';
+import dogShape from '../../helpers/propz/dogShape';
+
+import NewWalkForm from '../NewWalkForm/NewWalkForm';
 
 class Walks extends React.Component {
   state = {
-    walks: [],
+    modal: false,
   }
 
-  componentDidMount() {
-    walkData.getWalks()
-      .then((walkResp) => {
-        employeeData.getEmployees()
-          .then((employees) => {
-            const walksWithEmployees = SMASH.walkEmployee(walkResp, employees);
-            dogData.getDogs()
-              .then((doggos) => {
-                const walks = SMASH.walkDoggo(walksWithEmployees, doggos);
-                this.setState({ walks });
-              });
-          });
-      })
-      .catch(err => console.error('couldnt get walks', err));
+  static propTypes = {
+    walks: PropTypes.arrayOf(walkShape),
+    employees: PropTypes.arrayOf(employeeShape),
+    dogs: PropTypes.arrayOf(dogShape.dogShape),
+    addNewWalk: PropTypes.func.isRequired,
+    deleteWalk: PropTypes.func.isRequired,
+  }
+
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+    }));
   }
 
   render() {
-    const { walks } = this.state;
+    const {
+      walks, dogs, employees, addNewWalk,
+    } = this.props;
 
     const showWalks = walks.map(walk => (
-      <Walk key={ walk.id } walk={ walk } />
+      <Walk key={ walk.id } walk={ walk } deleteWalk={ this.props.deleteWalk }/>
     ));
 
     return (
-      <div className="Walks hide Pages">
-        <h2>WALKS</h2>
-        { showWalks }
+      <div className="Walks hide Pages container">
+        <div className="walk-page-header row justify-content-center">
+          <h2 className="">WALKS</h2>
+        </div>
+        <div className="walk-page-button row justify-content-end">
+          <button className="new-walk-btn btn btn-outline-info m-3" onClick={this.toggle}>+ New Walk</button>
+        </div>
+        <div className="row">
+          { showWalks }
+        </div>
+        <div>
+        <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Add A Walk!</ModalHeader>
+          <NewWalkForm toggle={this.toggle}
+          addNewWalk={ addNewWalk }
+          dogs={ dogs }
+          employees={ employees }/>
+        </Modal>
+      </div>
       </div>
     );
   }

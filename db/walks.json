@@ -2,6 +2,16 @@
   "walk1": {
     "dogId": "doggo2",
     "employeeId": "employee4",
-    "date": "20191025T0830"
+    "date": "20190724T0930"
+  },
+  "walk2": {
+    "dogId": "doggo1",
+    "employeeId": "employee1",
+    "date": "20190725T0830"
+  },
+  "walk3": {
+    "dogId": "doggo3",
+    "employeeId": "employee3",
+    "date": "20190723T1230"
   }
 }
