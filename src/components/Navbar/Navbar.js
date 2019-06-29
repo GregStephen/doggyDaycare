@@ -20,6 +20,12 @@ class Navbar extends React.Component {
   showWalks = (e) => {
     e.preventDefault();
     $('.Pages').toggleClass('hide');
+    console.error($('.walks-button').text());
+    if ($('.walks-button').text() === 'Walks') {
+      $('.walks-button').text = 'Home';
+    } else {
+      $('.walks-button').text = 'Walks';
+    }
   }
 
   render() {
@@ -37,7 +43,7 @@ class Navbar extends React.Component {
             <form className="form-inline my-2 my-lg-0">
               {authed ? (
                 <div>
-              <button className="btn btn-outline-info my-2 my-sm-0 mr-3" onClick={this.showWalks}>Walks</button>
+              <button className="btn btn-outline-info my-2 my-sm-0 mr-3 walks-button" onClick={this.showWalks}>Walks</button>
               <button className="btn btn-outline-danger my-2 my-sm-0" onClick={this.logMeOut}>Log Out</button>
                 </div>
               ) : (
