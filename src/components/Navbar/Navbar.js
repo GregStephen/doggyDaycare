@@ -1,6 +1,8 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import $ from 'jquery';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
 import './Navbar.scss';
@@ -14,6 +16,16 @@ class Navbar extends React.Component {
     e.preventDefault();
     firebase.auth().signOut();
   };
+
+  showWalks = (e) => {
+    e.preventDefault();
+    $('.Pages').toggleClass('hide');
+    if ($('.walks-button').text() === 'Walks') {
+      $('.walks-button').text('Home');
+    } else {
+      $('.walks-button').text('Walks');
+    }
+  }
 
   render() {
     const { authed } = this.props;
@@ -29,7 +41,10 @@ class Navbar extends React.Component {
             </ul>
             <form className="form-inline my-2 my-lg-0">
               {authed ? (
+                <div>
+              <button className="btn btn-outline-info my-2 my-sm-0 mr-3 walks-button" onClick={this.showWalks}>Walks</button>
               <button className="btn btn-outline-danger my-2 my-sm-0" onClick={this.logMeOut}>Log Out</button>
+                </div>
               ) : (
                 ''
               )}

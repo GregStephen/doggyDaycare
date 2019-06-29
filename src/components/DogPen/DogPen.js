@@ -1,25 +1,33 @@
 import React from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import dogShape from '../../helpers/propz/dogShape';
+import dogData from '../../helpers/data/dogData';
+// import dogShape from '../../helpers/propz/dogShape';
 import Dog from '../Dog/Dog';
 import './DogPen.scss';
 
 class DogPen extends React.Component {
-  static propTypes = {
-    dogs: PropTypes.arrayOf(dogShape.dogShape),
+  state = {
+    dogs: [],
+  }
+
+  componentDidMount() {
+    dogData.getDogs()
+      .then(dogs => this.setState({ dogs }))
+      .catch(err => console.error('could not get dogs', err));
   }
 
   render() {
-    const { dogs } = this.props;
+    const { dogs } = this.state;
     const makeDogs = dogs.map(dog => (
       <Dog key={ dog.id } dog={ dog } />
     ));
 
     return (
-      <div className="DogPen container">
+      <div className="DogPen container Pages">
+        <h2>Check Out Our Sweet Pups</h2>
         <div className="card-columns">
           { makeDogs }
         </div>
