@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 
 import DogPen from '../DogPen/DogPen';
@@ -19,13 +20,7 @@ class Home extends React.Component {
     walks: [],
   }
 
-  componentDidMount() {
-    dogData.getDogs()
-      .then(dogs => this.setState({ dogs }))
-      .catch(err => console.error('could not get dogs', err));
-    employeeData.getEmployees()
-      .then(employees => this.setState({ employees }))
-      .catch(err => console.error('could not get employees', err));
+  getWalkData = () => {
     walkData.getWalks()
       .then((walkResp) => {
         employeeData.getEmployees()
@@ -41,13 +36,30 @@ class Home extends React.Component {
       .catch(err => console.error('couldnt get walks', err));
   }
 
+  componentDidMount() {
+    dogData.getDogs()
+      .then(dogs => this.setState({ dogs }))
+      .catch(err => console.error('could not get dogs', err));
+    employeeData.getEmployees()
+      .then(employees => this.setState({ employees }))
+      .catch(err => console.error('could not get employees', err));
+    this.getWalkData();
+  }
+
+
+  addNewWalk = (newWalk) => {
+    walkData.addNewWalkToDatabase(newWalk)
+      .then(() => this.getWalkData)
+      .catch(err => console.error('trouble adding new walk', err));
+  }
+
   render() {
     const { walks, dogs, employees } = this.state;
     return (
       <div className="Home container">
         <DogPen dogs={ dogs }/>
         <Breakroom employees={ employees }/>
-        < Walks walks={ walks } employees={ employees } dogs={ dogs }/>
+        <Walks walks={ walks } employees={ employees } dogs={ dogs } addNewWalk={this.addNewWalk}/>
       </div>
     );
   }

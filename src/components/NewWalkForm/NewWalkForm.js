@@ -2,10 +2,16 @@ import React from 'react';
 import {
   Form, FormGroup, Label, Input, ModalBody, ModalFooter, Button,
 } from 'reactstrap';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 
 const moment = require('moment');
 
 class NewWalkForm extends React.Component {
+  static propTypes = {
+    addNewWalk: PropTypes.func.isRequired,
+  }
+
   state = {
     doggoValue: '',
     employeeValue: '',
@@ -19,8 +25,13 @@ class NewWalkForm extends React.Component {
     });
   };
 
+  toggleModal = () => {
+    const { toggle } = this.props;
+    toggle();
+  }
 
-  handleSubmit = (e) => {
+  handleNewWalkSubmit = (e) => {
+    const { addNewWalk } = this.props;
     e.preventDefault();
     const newDate = `${this.state.dateValue}T${this.state.timeValue}`;
     const newWalk = {
@@ -28,15 +39,18 @@ class NewWalkForm extends React.Component {
       employeeId: this.state.employeeValue,
       dateValue: newDate,
     };
-    console.error(newWalk);
+    addNewWalk(newWalk);
+    this.toggleModal();
   }
+
 
   render() {
     const { dateValue, timeValue } = this.state;
     return (
       <div>
+      <Form onSubmit={this.handleNewWalkSubmit}>
       <ModalBody>
-        <Form onSubmit={this.handleSubmit}>
+
           <FormGroup>
             <Label for="doggoSelection">Select Doggo</Label>
             <Input type="select" name="doggoValue" id="doggoSelection">
@@ -67,13 +81,13 @@ class NewWalkForm extends React.Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-        </Form>
        </ModalBody>
        <ModalFooter>
-         <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+         <Button type="submit" color="primary">Add Walk</Button>{' '}
+         <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
        </ModalFooter>
-      </div>
+       </Form>
+       </div>
     );
   }
 }

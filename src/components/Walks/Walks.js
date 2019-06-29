@@ -1,10 +1,9 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 import {
   Modal, ModalHeader,
 } from 'reactstrap';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
 
 import Walk from '../Walk/Walk';
 import './Walks.scss';
@@ -16,15 +15,16 @@ import dogShape from '../../helpers/propz/dogShape';
 import NewWalkForm from '../NewWalkForm/NewWalkForm';
 
 class Walks extends React.Component {
+  state = {
+    modal: false,
+  }
+
   static propTypes = {
     walks: PropTypes.arrayOf(walkShape),
     employees: PropTypes.arrayOf(employeeShape),
     dogs: PropTypes.arrayOf(dogShape.dogShape),
+    addNewWalk: PropTypes.func.isRequired,
   }
-
-  state = {
-    modal: false,
-  };
 
   toggle = () => {
     this.setState(prevState => ({
@@ -51,9 +51,9 @@ class Walks extends React.Component {
           { showWalks }
         </div>
         <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Add A Walk!</ModalHeader>
-            <NewWalkForm />
+        <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Add A Walk!</ModalHeader>
+          <NewWalkForm toggle={this.toggle} addNewWalk={this.props.addNewWalk}/>
         </Modal>
       </div>
       </div>
