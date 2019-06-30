@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 
 import Walk from '../Walk/Walk';
+import WalkRow from '../WalkRow/WalkRow';
 import './Walks.scss';
 
 import walkShape from '../../helpers/propz/walkShape';
@@ -35,11 +36,15 @@ class Walks extends React.Component {
 
   render() {
     const {
-      walks, dogs, employees, addNewWalk,
+      walks, dogs, employees, addNewWalk, editWalk,
     } = this.props;
 
     const showWalks = walks.map(walk => (
       <Walk key={ walk.id } walk={ walk } deleteWalk={ this.props.deleteWalk }/>
+    ));
+
+    const walkRows = walks.map(walk => (
+      <WalkRow key={ walk.id } walk={ walk } deleteWalk={ this.props.deleteWalk }/>
     ));
 
     return (
@@ -50,18 +55,43 @@ class Walks extends React.Component {
         <div className="walk-page-button row justify-content-end">
           <button className="new-walk-btn btn btn-outline-info m-3" onClick={this.toggle}>+ New Walk</button>
         </div>
+        <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Walker</th>
+            <th scope="col">Dog</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {walkRows}
+        </tbody>
+      </table>
         <div className="row">
           { showWalks }
         </div>
         <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>
-        <ModalHeader toggle={this.toggle}>Add A Walk!</ModalHeader>
-          <NewWalkForm toggle={this.toggle}
-          addNewWalk={ addNewWalk }
-          dogs={ dogs }
-          employees={ employees }/>
-        </Modal>
-      </div>
+          <Modal isOpen={this.state.modal} toggle={this.toggleModal}
+          className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Add A Walk!</ModalHeader>
+            <NewWalkForm toggle={this.toggle}
+            addNewWalk={ addNewWalk }
+            dogs={ dogs }
+            employees={ employees }/>
+          </Modal>
+        </div>
+        <div>
+          <Modal isOpen={this.state.modal} toggle={this.toggleModal}
+          className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Edit this Walk!</ModalHeader>
+            <NewWalkForm toggle={this.toggle}
+            editWalk={ editWalk }
+            dogs={ dogs }
+            employees={ employees }/>
+          </Modal>
+        </div>
       </div>
     );
   }

@@ -23,6 +23,12 @@ class Home extends React.Component {
   getWalkData = () => {
     walkData.getWalks()
       .then((walkResp) => {
+        walkResp.sort((a, b) => {
+          const aDate = a.date;
+          const bDate = b.date;
+          // eslint-disable-next-line no-nested-ternary
+          return aDate < bDate ? -1 : aDate > bDate ? 1 : 0;
+        });
         employeeData.getEmployees()
           .then((employees) => {
             const walksWithEmployees = SMASH.walkEmployee(walkResp, employees);

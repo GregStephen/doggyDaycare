@@ -61,7 +61,8 @@ class NewWalkForm extends React.Component {
       <ModalBody>
           <FormGroup>
             <Label for="doggoSelection">Select Doggo</Label>
-            <Input type="select" name="doggoValue" id="doggoSelection" value={this.state.doggoValue} onChange={this.handleChange}>
+            <Input type="select" name="doggoValue" id="doggoSelection" onChange={this.handleChange} required>
+            <option value="">Select a dog</option>
               { dogs.map(object => (
                 <option key={object.id} value={object.id}>{object.name}</option>
               )) }
@@ -69,28 +70,29 @@ class NewWalkForm extends React.Component {
           </FormGroup>
           <FormGroup>
             <Label for="employeeSelection">Select Walker</Label>
-            <Input type="select" name="employeeValue" id="employeeSelection" value={this.state.employeeValue} onChange={this.handleChange}>
+            <Input type="select" name="employeeValue" id="employeeSelection" value={this.state.employeeValue} onChange={this.handleChange} required>
+              <option value="">Select an employee</option>
             { employees.map(object => (
                 <option key={object.id} value={object.id}>{object.name}</option>
             )) }
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="exampleDate">Date</Label>
+            <Label for="walkDate">Date</Label>
             <Input
               type="date"
               name="dateValue"
-              id="exampleDate"
+              id="walkDate"
               value={dateValue}
               onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleTime">Time</Label>
+            <Label for="walkTime">Time</Label>
             <Input
               type="time"
               name="timeValue"
-              id="exampleTime"
+              id="walkTime"
               value={timeValue}
               onChange={this.handleChange}
             />
