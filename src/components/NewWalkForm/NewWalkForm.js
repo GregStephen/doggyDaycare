@@ -20,7 +20,7 @@ class NewWalkForm extends React.Component {
   state = {
     doggoValue: '',
     employeeValue: '',
-    dateValue: moment().format('YYYY-MM-D'),
+    dateValue: moment().format('YYYY-MM-DD'),
     timeValue: moment().format('HH:mm'),
   }
 

@@ -12,18 +12,24 @@ class Dog extends React.Component {
   render() {
     const { dog } = this.props;
     return (
-      <div className="Dog">
+      <div className="Dog col-12 mb-2">
         <div className="card">
-         <img className="dog-image img-fluid" src={dog.imageUrl} alt=''></img>
-         <div className="card-body">
-          <h2 className="card-title">{dog.name}</h2>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Color: {dog.color}</li>
-            <li className="list-group-item">Sex: {dog.sex}</li>
-            <li className="list-group-item"> Age: {dog.age}</li>
-            <li className="list-group-item">Breed: {dog.breed}</li>
-          </ul>
-         </div>
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <img className="dog-image img-fluid" src={dog.imageUrl} alt=''></img>
+            </div>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h2 className="card-title">{dog.name}</h2>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">Breed: {dog.breed}</li>
+                  <li className="list-group-item">Color: {dog.color}</li>
+                  <li className="list-group-item">Sex: {dog.sex}</li>
+                  <li className="list-group-item"> Age: {dog.age}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

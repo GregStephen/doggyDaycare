@@ -9,6 +9,7 @@ class WalkRow extends React.Component {
   static propTypes = {
     employee: walkShape,
     deleteWalk: PropTypes.func.isRequired,
+    editWalk: PropTypes.func.isRequired,
   }
 
   deleteWalkEvent = (e) => {
@@ -33,7 +34,7 @@ class WalkRow extends React.Component {
         <td>{time}</td>
         <td>{walk.employeeName}</td>
         <td>{walk.doggoName}</td>
-        <td><button className="btn btn-info" onClick={this.showEditModal}>Edit</button>
+        <td><button className="btn btn-info edit-walk-button mr-4" onClick={this.showEditModal}>Edit</button>
         <button className="btn btn-danger" onClick={this.deleteWalkEvent}>X</button></td>
       </tr>
     );

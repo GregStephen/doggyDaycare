@@ -54,23 +54,37 @@ class Home extends React.Component {
 
   deleteWalk = (walkId) => {
     walkData.deleteWalkFromDatabase(walkId)
-      .then(() => this.getWalkData)
+      .then(() => this.getWalkData())
       .catch(err => console.error('trouble deleting walk', err));
   }
 
   addNewWalk = (newWalk) => {
     walkData.addNewWalkToDatabase(newWalk)
-      .then(() => this.getWalkData)
+      .then(() => this.getWalkData())
       .catch(err => console.error('trouble adding new walk', err));
+  }
+
+  editWalk = (editedWalk) => {
+    walkData.editWalkOnDatabase(editedWalk)
+      .then(() => this.getWalkData())
+      .catch(err => console.error('trouble editing walk', err));
   }
 
   render() {
     const { walks, dogs, employees } = this.state;
     return (
       <div className="Home container">
+        <div className="row">
         <DogPen dogs={ dogs }/>
         <Breakroom employees={ employees }/>
-        <Walks walks={ walks } employees={ employees } dogs={ dogs } addNewWalk={this.addNewWalk} deleteWalk={this.deleteWalk}/>
+        </div>
+        <Walks
+        walks={ walks }
+        employees={ employees }
+        dogs={ dogs }
+        addNewWalk={this.addNewWalk}
+        deleteWalk={this.deleteWalk}
+        editWalk={this.editWalk}/>
       </div>
     );
   }

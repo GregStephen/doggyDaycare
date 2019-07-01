@@ -26,6 +26,7 @@ class Walks extends React.Component {
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     addNewWalk: PropTypes.func.isRequired,
     deleteWalk: PropTypes.func.isRequired,
+    editWalk: PropTypes.func.isRequired,
   }
 
   toggle = () => {
@@ -36,15 +37,15 @@ class Walks extends React.Component {
 
   render() {
     const {
-      walks, dogs, employees, addNewWalk, editWalk,
+      walks, dogs, employees, addNewWalk, editWalk, deleteWalk,
     } = this.props;
 
-    const showWalks = walks.map(walk => (
-      <Walk key={ walk.id } walk={ walk } deleteWalk={ this.props.deleteWalk }/>
-    ));
-
     const walkRows = walks.map(walk => (
-      <WalkRow key={ walk.id } walk={ walk } deleteWalk={ this.props.deleteWalk }/>
+      <WalkRow
+      key={ walk.id }
+      walk={ walk }
+      deleteWalk={ deleteWalk }
+      editWalk={ editWalk }/>
     ));
 
     return (
@@ -69,9 +70,6 @@ class Walks extends React.Component {
           {walkRows}
         </tbody>
       </table>
-        <div className="row">
-          { showWalks }
-        </div>
         <div>
           <Modal isOpen={this.state.modal} toggle={this.toggleModal}
           className={this.props.className}>
@@ -82,16 +80,17 @@ class Walks extends React.Component {
             employees={ employees }/>
           </Modal>
         </div>
-        <div>
-          <Modal isOpen={this.state.modal} toggle={this.toggleModal}
-          className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Edit this Walk!</ModalHeader>
-            <NewWalkForm toggle={this.toggle}
-            editWalk={ editWalk }
-            dogs={ dogs }
-            employees={ employees }/>
-          </Modal>
-        </div>
+          <div>
+            <Modal isOpen={this.state.modal} toggle={this.toggleModal}
+            className={this.props.className}>
+            <ModalHeader toggle={this.toggle}>Edit this Walk!</ModalHeader>
+              <Walk toggle={this.toggle}
+              deleteWalk={ deleteWalk }
+              editWalk={ editWalk }
+              dogs={ dogs }
+              employees={ employees }/>
+            </Modal>
+          </div>
       </div>
     );
   }
