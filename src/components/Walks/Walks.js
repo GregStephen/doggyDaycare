@@ -55,7 +55,8 @@ class Walks extends React.Component {
     return (
       <div className="Walks hide Pages container">
         <div className="walk-page-header row justify-content-center">
-          <h2 className="">WALKS</h2>
+          <img className="dog-banner" src="https://www.astepbeyond.co.uk/wp-content/uploads/2017/06/dog-walking-page-banner.jpg" alt="dogs walking around being cool pups"></img>
+          <h2 className="walk-header">WALKS</h2>
         </div>
         <div className="walk-page-button row justify-content-end">
           <button className="new-walk-btn btn btn-outline-info m-3" onClick={this.toggleNew}>+ New Walk</button>

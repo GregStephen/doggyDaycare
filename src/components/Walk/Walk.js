@@ -145,36 +145,57 @@ class Walk extends React.Component {
               onChange={this.handleDateChange}
             />
           </FormGroup>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item"><img className="walk-employee-image"src={walkToEdit.employeeImage} alt={walkToEdit.employeeName}></img></li>
-            <FormGroup>
-              <Label for="employeeSelection"></Label>
-              <Input type="select" name="employeeValue" id="employeeSelection" value={this.state.employeeValue} onChange={this.handleEmployeeChange} required>
-                <option
-                value={employeeValue}>{walkToEdit.employeeName}</option>
-              { employees.map(object => (
-                object.id === employeeValue ? ('')
-                  : (
-                <option key={object.id} value={object.id}>{object.name}</option>
-                  )
-              )) }
-              </Input>
-            </FormGroup>
-            <li className="list-group-item"><img className="walk-doggo-image"src={walkToEdit.doggoImage} alt={walkToEdit.doggoName}></img></li>
-            <FormGroup>
-              <Label for="doggoSelection"></Label>
-              <Input type="select" name="doggoValue" id="doggoSelection" onChange={this.handleDogChange} required>
-                <option
-                value={doggoValue}>{walkToEdit.doggoName}</option>
-                { dogs.map(object => (
-                  object.id === doggoValue ? ('') : (
-                    <option key={object.id} value={object.id}>{object.name}</option>
-                  )
-                )) }
-              </Input>
-            </FormGroup>
-            <li className="list-group-item text-center"><button className="btn btn-danger" onClick={this.deleteWalkEvent}>DELETE THIS WALK</button></li>
-          </ul>
+          <div className="Employee col-12 mb-2">
+            <div className="card">
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                <img className="walk-employee-image"src={walkToEdit.employeeImage} alt={walkToEdit.employeeName}></img>
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                  <FormGroup>
+                    <Label for="employeeSelection"></Label>
+                    <Input type="select" name="employeeValue" id="employeeSelection" value={this.state.employeeValue} onChange={this.handleEmployeeChange} required>
+                      <option
+                      value={employeeValue}>{walkToEdit.employeeName}</option>
+                    { employees.map(object => (
+                      object.id === employeeValue ? ('')
+                        : (
+                      <option key={object.id} value={object.id}>{object.name}</option>
+                        )
+                    )) }
+                    </Input>
+                  </FormGroup>
+                  </div>
+                </div>
+             </div>
+            </div>
+          </div>
+          <div className="Employee col-12 mb-2">
+            <div className="card">
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                <img className="walk-doggo-image"src={walkToEdit.doggoImage} alt={walkToEdit.doggoName}></img>                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                  <FormGroup>
+                    <Label for="doggoSelection"></Label>
+                    <Input type="select" name="doggoValue" id="doggoSelection" onChange={this.handleDogChange} required>
+                      <option
+                      value={doggoValue}>{walkToEdit.doggoName}</option>
+                      { dogs.map(object => (
+                        object.id === doggoValue ? ('') : (
+                          <option key={object.id} value={object.id}>{object.name}</option>
+                        )
+                      )) }
+                    </Input>
+                  </FormGroup>
+                  </div>
+                </div>
+             </div>
+            </div>
+          </div>
+          <button className="btn btn-danger col-12" onClick={this.deleteWalkEvent}>DELETE THIS WALK</button>
         </div>
         </div>
       </div>

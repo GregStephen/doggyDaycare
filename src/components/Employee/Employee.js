@@ -22,7 +22,6 @@ class Employee extends React.Component {
             <div className="card-body">
               <h2 className="card-title">{employee.name}</h2>
               <ul className="list-group list-group-flush">
-                {/* <li className="list-group-item">Position: {employee.position}</li> */}
                 <li className="list-group-item">{employee.yearsEmployed} years with Doggy Daycare</li>
               </ul>
             </div>
