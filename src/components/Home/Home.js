@@ -64,8 +64,8 @@ class Home extends React.Component {
       .catch(err => console.error('trouble adding new walk', err));
   }
 
-  editWalk = (editedWalk) => {
-    walkData.editWalkOnDatabase(editedWalk)
+  editWalk = (editedWalk, walkId) => {
+    walkData.editWalkOnDatabase(editedWalk, walkId)
       .then(() => this.getWalkData())
       .catch(err => console.error('trouble editing walk', err));
   }

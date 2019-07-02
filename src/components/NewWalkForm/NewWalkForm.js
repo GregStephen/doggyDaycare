@@ -15,6 +15,7 @@ class NewWalkForm extends React.Component {
     addNewWalk: PropTypes.func.isRequired,
     dogs: PropTypes.arrayOf(dogShapes.dogShape),
     employees: PropTypes.arrayOf(employeeShape),
+    toggleNew: PropTypes.func.isRequired,
   }
 
   state = {
@@ -31,8 +32,8 @@ class NewWalkForm extends React.Component {
   };
 
   toggleModal = () => {
-    const { toggle } = this.props;
-    toggle();
+    const { toggleNew } = this.props;
+    toggleNew();
   }
 
   handleNewWalkSubmit = (e) => {
