@@ -46,10 +46,35 @@ class Walk extends React.Component {
     toggleEdit();
   }
 
-  handleChange = (e) => {
+  // handleDateChange = (e) => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value,
+  //   });
+  //   const newDateStuff = { ...this.state.walkToEdit };
+  //   const newDate = moment(e.target.value, 'YYYY-MM-DD').format('YYYYMMDD');
+  //   const newTime = moment(this.state.timeValue, 'HH:mm').format('HHmm');
+  //   const newDateAndTime = `${newDate}T${newTime}`;
+  //   newDateStuff.date = newDateAndTime;
+  //   this.setState({ walkToEdit: newDateStuff });
+  // };
+
+  handleDateChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
+    const newDateStuff = { ...this.state.walkToEdit };
+    let newDate = '';
+    let newTime = '';
+    if (e.target.name === 'dateValue') {
+      newDate = moment(e.target.value, 'YYYY-MM-DD').format('YYYYMMDD');
+      newTime = moment(this.state.timeValue, 'HH:mm').format('HHmm');
+    } else {
+      newDate = moment(this.state.dateValue, 'YYYY-MM-DD').format('YYYYMMDD');
+      newTime = moment(e.target.value, 'HH:mm').format('HHmm');
+    }
+    const newDateAndTime = `${newDate}T${newTime}`;
+    newDateStuff.date = newDateAndTime;
+    this.setState({ walkToEdit: newDateStuff });
   };
 
   handleDogChange = (e) => {
@@ -78,8 +103,14 @@ class Walk extends React.Component {
 
   editTheWalk = (e) => {
     e.preventDefault();
+    const updatedWalk = { ...this.state.walkToEdit };
+    delete updatedWalk.doggoImage;
+    delete updatedWalk.doggoName;
+    delete updatedWalk.employeeImage;
+    delete updatedWalk.employeeName;
+    delete updatedWalk.id;
     const { editWalk, walk } = this.props;
-    editWalk(this.state.walkToEdit, walk.id);
+    editWalk(updatedWalk, walk.id);
     this.toggleModal();
   };
 
@@ -101,7 +132,7 @@ class Walk extends React.Component {
               name="dateValue"
               id="walkDate"
               value={dateValue}
-              onChange={this.handleChange}
+              onChange={this.handleDateChange}
             />
           </FormGroup>
           <FormGroup>
@@ -111,7 +142,7 @@ class Walk extends React.Component {
               name="timeValue"
               id="walkTime"
               value={timeValue}
-              onChange={this.handleChange}
+              onChange={this.handleDateChange}
             />
           </FormGroup>
           <ul className="list-group list-group-flush">
@@ -142,7 +173,7 @@ class Walk extends React.Component {
                 )) }
               </Input>
             </FormGroup>
-            <li className="list-group-item"><button className="btn btn-danger" onClick={this.deleteWalkEvent}>DELETE THIS WALK</button></li>
+            <li className="list-group-item text-center"><button className="btn btn-danger" onClick={this.deleteWalkEvent}>DELETE THIS WALK</button></li>
           </ul>
         </div>
         </div>
