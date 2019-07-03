@@ -96,6 +96,12 @@ class Home extends React.Component {
       .catch(err => console.error('trouble firing employee', err));
   }
 
+  addEmployee = (employeeObj) => {
+    employeeData.addNewEmployeeToDatabase(employeeObj)
+      .then(() => this.getEmployeeData())
+      .catch(err => console.error('trouble adding employee', err));
+  }
+
   render() {
     const { walks, dogs, employees } = this.state;
     return (
@@ -109,6 +115,7 @@ class Home extends React.Component {
         <Breakroom
         employees={ employees }
         fireEmployee={ this.fireEmployee}
+        addEmployee={this.addEmployee}
         />
         </div>
         <Walks
