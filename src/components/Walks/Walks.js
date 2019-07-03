@@ -86,19 +86,6 @@ class Walks extends React.Component {
             employees={ employees }/>
           </Modal>
         </div>
-          {/* <div>
-            <Modal isOpen={this.state.editModal} toggle={this.toggleModal}
-            className={this.props.className}>
-            <ModalHeader toggle={this.toggle}>Edit this Walk!</ModalHeader>
-              <Walk
-              // walk={ walk }
-              toggleEdit={this.toggleEdit}
-              deleteWalk={ deleteWalk }
-              editWalk={ editWalk }
-              dogs={ dogs }
-              employees={ employees }/>
-            </Modal>
-          </div> */}
       </div>
     );
   }

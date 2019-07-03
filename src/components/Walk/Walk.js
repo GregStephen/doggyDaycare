@@ -46,18 +46,6 @@ class Walk extends React.Component {
     toggleEdit();
   }
 
-  // handleDateChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  //   const newDateStuff = { ...this.state.walkToEdit };
-  //   const newDate = moment(e.target.value, 'YYYY-MM-DD').format('YYYYMMDD');
-  //   const newTime = moment(this.state.timeValue, 'HH:mm').format('HHmm');
-  //   const newDateAndTime = `${newDate}T${newTime}`;
-  //   newDateStuff.date = newDateAndTime;
-  //   this.setState({ walkToEdit: newDateStuff });
-  // };
-
   handleDateChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

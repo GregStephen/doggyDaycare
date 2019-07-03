@@ -42,10 +42,14 @@ class Home extends React.Component {
       .catch(err => console.error('couldnt get walks', err));
   }
 
-  componentDidMount() {
+  getDogData = () => {
     dogData.getDogs()
       .then(dogs => this.setState({ dogs }))
       .catch(err => console.error('could not get dogs', err));
+  }
+
+  componentDidMount() {
+    this.getDogData();
     employeeData.getEmployees()
       .then(employees => this.setState({ employees }))
       .catch(err => console.error('could not get employees', err));
@@ -70,12 +74,19 @@ class Home extends React.Component {
       .catch(err => console.error('trouble editing walk', err));
   }
 
+  addNewDog = (dogObject) => {
+    dogData.addNewDogToDatabase(dogObject)
+      .then(() => this.getDogData())
+      .catch(err => console.error('trouble adding dog', err));
+    console.error(dogObject);
+  }
+
   render() {
     const { walks, dogs, employees } = this.state;
     return (
       <div className="Home container">
         <div className="row">
-        <DogPen dogs={ dogs }/>
+        <DogPen dogs={ dogs } addNewDog={ this.addNewDog }/>
         <Breakroom employees={ employees }/>
         </div>
         <Walks

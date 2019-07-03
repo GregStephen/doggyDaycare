@@ -18,7 +18,8 @@ class Breakroom extends React.Component {
 
     return (
       <div className="Breakroom container Pages col-6">
-        <h2>Check Out Our Sweet Care Takers</h2>
+        <h2 className="header">Your Stellar Employees</h2>
+        <button className="btn btn-outline-info mb-4">Add New Employee!</button>
         <div className="row justify-content-around">
         { makeEmployees }
         </div>
