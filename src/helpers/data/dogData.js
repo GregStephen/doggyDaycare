@@ -16,4 +16,6 @@ const getDogs = () => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { getDogs };
+const addNewDogToDatabase = dogObject => axios.post(`${baseUrl}/dogs.json`, dogObject);
+
+export default { getDogs, addNewDogToDatabase };

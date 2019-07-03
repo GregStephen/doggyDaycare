@@ -9,7 +9,6 @@ const dogShape = PropTypes.shape({
   breed: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
-  isHouseBroken: PropTypes.bool.isRequired,
 });
 
 export default { dogShape };
