@@ -78,7 +78,12 @@ class Home extends React.Component {
     dogData.addNewDogToDatabase(dogObject)
       .then(() => this.getDogData())
       .catch(err => console.error('trouble adding dog', err));
-    console.error(dogObject);
+  }
+
+  checkoutDogFromDayCare = (dogId) => {
+    dogData.deleteDogFromDatabase(dogId)
+      .then(() => this.getDogData())
+      .catch(err => console.error('trouble checking out a dog', err));
   }
 
   render() {
@@ -86,7 +91,11 @@ class Home extends React.Component {
     return (
       <div className="Home container">
         <div className="row">
-        <DogPen dogs={ dogs } addNewDog={ this.addNewDog }/>
+        <DogPen
+        dogs={ dogs }
+        addNewDog={ this.addNewDog }
+        checkoutDogFromDayCare={ this.checkoutDogFromDayCare }
+        />
         <Breakroom employees={ employees }/>
         </div>
         <Walks

@@ -18,6 +18,7 @@ class DogPen extends React.Component {
   static propTypes = {
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     addNewDog: PropTypes.func.isRequired,
+    checkoutDogFromDayCare: PropTypes.func.isRequired,
   }
 
   toggleNewDog = () => {
@@ -27,9 +28,9 @@ class DogPen extends React.Component {
   }
 
   render() {
-    const { dogs, addNewDog } = this.props;
+    const { dogs, addNewDog, checkoutDogFromDayCare } = this.props;
     const makeDogs = dogs.map(dog => (
-      <Dog key={ dog.id } dog={ dog } />
+      <Dog key={ dog.id } dog={ dog } checkoutDogFromDayCare={ checkoutDogFromDayCare }/>
     ));
 
     return (
