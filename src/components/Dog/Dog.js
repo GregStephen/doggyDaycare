@@ -1,4 +1,6 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 
 import dogShape from '../../helpers/propz/dogShape';
 
@@ -7,6 +9,12 @@ import './Dog.scss';
 class Dog extends React.Component {
   static propTypes = {
     dog: dogShape.dogShape,
+    checkoutDogFromDayCare: PropTypes.func.isRequired,
+  }
+
+  checkThatDogOut = (e) => {
+    const { dog, checkoutDogFromDayCare } = this.props;
+    checkoutDogFromDayCare(dog.id);
   }
 
   render() {
@@ -16,7 +24,8 @@ class Dog extends React.Component {
         <div className="card">
           <div className="row no-gutters">
             <div className="col-md-4">
-              <img className="dog-image img-fluid" src={dog.imageUrl} alt=''></img>
+              <img className="dog-image img-fluid" src={dog.imageUrl} alt='It is a cute pup'></img>
+              <button className="btn btn-outline-danger checkout-btn" onClick={this.checkThatDogOut}>Check Dog Out</button>
             </div>
             <div className="col-md-8">
               <div className="card-body">

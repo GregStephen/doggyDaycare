@@ -18,4 +18,6 @@ const getDogs = () => new Promise((resolve, reject) => {
 
 const addNewDogToDatabase = dogObject => axios.post(`${baseUrl}/dogs.json`, dogObject);
 
-export default { getDogs, addNewDogToDatabase };
+const deleteDogFromDatabase = dogId => axios.delete(`${baseUrl}/dogs/${dogId}.json`);
+
+export default { getDogs, addNewDogToDatabase, deleteDogFromDatabase };
