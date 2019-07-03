@@ -48,11 +48,15 @@ class Home extends React.Component {
       .catch(err => console.error('could not get dogs', err));
   }
 
-  componentDidMount() {
-    this.getDogData();
+  getEmployeeData = () => {
     employeeData.getEmployees()
       .then(employees => this.setState({ employees }))
       .catch(err => console.error('could not get employees', err));
+  }
+
+  componentDidMount() {
+    this.getDogData();
+    this.getEmployeeData();
     this.getWalkData();
   }
 
@@ -86,6 +90,12 @@ class Home extends React.Component {
       .catch(err => console.error('trouble checking out a dog', err));
   }
 
+  fireEmployee = (employeeId) => {
+    employeeData.deleteEmployeeFromDatabase(employeeId)
+      .then(() => this.getEmployeeData())
+      .catch(err => console.error('trouble firing employee', err));
+  }
+
   render() {
     const { walks, dogs, employees } = this.state;
     return (
@@ -96,7 +106,10 @@ class Home extends React.Component {
         addNewDog={ this.addNewDog }
         checkoutDogFromDayCare={ this.checkoutDogFromDayCare }
         />
-        <Breakroom employees={ employees }/>
+        <Breakroom
+        employees={ employees }
+        fireEmployee={ this.fireEmployee}
+        />
         </div>
         <Walks
         walks={ walks }
