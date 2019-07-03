@@ -18,4 +18,6 @@ const getEmployees = () => new Promise((resolve, reject) => {
 
 const deleteEmployeeFromDatabase = employeeId => axios.delete(`${baseUrl}/employees/${employeeId}.json`);
 
-export default { getEmployees, deleteEmployeeFromDatabase };
+const addNewEmployeeToDatabase = employeeObj => axios.post(`${baseUrl}/employees.json`, employeeObj);
+
+export default { getEmployees, deleteEmployeeFromDatabase, addNewEmployeeToDatabase };
