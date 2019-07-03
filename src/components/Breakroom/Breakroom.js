@@ -8,12 +8,13 @@ import './Breakroom.scss';
 class Breakroom extends React.Component {
   static propTypes = {
     dogs: PropTypes.arrayOf(employeeShape),
+    fireEmployee: PropTypes.func.isRequired,
   }
 
   render() {
-    const { employees } = this.props;
+    const { employees, fireEmployee } = this.props;
     const makeEmployees = employees.map(employee => (
-      <Employee key={ employee.id } employee={ employee } />
+      <Employee key={ employee.id } employee={ employee } fireEmployee={ fireEmployee } />
     ));
 
     return (

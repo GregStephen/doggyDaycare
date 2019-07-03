@@ -16,4 +16,6 @@ const getEmployees = () => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { getEmployees };
+const deleteEmployeeFromDatabase = employeeId => axios.delete(`${baseUrl}/employees/${employeeId}.json`);
+
+export default { getEmployees, deleteEmployeeFromDatabase };

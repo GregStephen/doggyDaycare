@@ -1,5 +1,6 @@
 import React from 'react';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 import employeeShape from '../../helpers/propz/employeeShape';
 
 import './Employee.scss';
@@ -7,6 +8,13 @@ import './Employee.scss';
 class Employee extends React.Component {
   static propTypes = {
     employee: employeeShape,
+    fireEmployee: PropTypes.func.isRequired,
+  }
+
+  fireThisEmployee = (e) => {
+    e.preventDefault();
+    const { fireEmployee, employee } = this.props;
+    fireEmployee(employee.id);
   }
 
   render() {
@@ -25,6 +33,7 @@ class Employee extends React.Component {
                 <li className="list-group-item">{employee.yearsEmployed} years with Doggy Daycare</li>
               </ul>
             </div>
+            <button className="btn btn-outline-danger" onClick={this.fireThisEmployee}>FIRE</button>
           </div>
        </div>
       </div>
