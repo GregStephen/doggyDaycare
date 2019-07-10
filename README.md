@@ -1,4 +1,45 @@
+# DOGGY DAYCARE
+
+## Description
+A fun doggy daycare site where you are the owner and can manage your employees and dogs you have checked in.
+You have the ability to check dogs in, check them out, hire employees, fire them, schedule walks, edit and delete walks.
+
+## Screenshots
+
+#### Landing Page
+What you see on page load before you log in to the app
+[Landing Page](./assets/screenshots/landing_page.png)
+
+#### Home Page
+What you see when you log in to the App, you are able to check a dog out/ fire an employee
+You are also able to add employees or dogs
+[Home Page](./assets/screenshots/home_page.png)
+
+#### Add Dog
+This is the form that pops up when you try to add a dog
+[Add Dog](./assets/screenshots/add_dog.png)
+
+#### Add Employee
+This is the form that pops up when you try to add an employee, notice the verification that appears
+[Add Employee](./assets/screenshots/add_employee.png)
+
+#### Walks Page
+This is the page that shows all the walks scheduled.
+Here you can add a walk, delete walks or edit walks
+[Walk Page](./assets/screenshots/walk_page.png)
+
+#### Add Walks
+This is the form that pops up when you want to add a walk
+[Add Walk](./assets/screenshots/add_walk.png)
+
+#### Edit Walks
+This is the form that pops up when you want to edit walks
+The pictures change when you select a new employee or dog
+[Edit Walks](./assets/screenshots/edit_walk.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
@@ -66,3 +107,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+#### AUTHOR
+# Greg Stephen
+
+## DEPLOYED AT 
+https://doggy-daycare-74511.firebaseapp.com/

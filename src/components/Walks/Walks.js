@@ -53,9 +53,9 @@ class Walks extends React.Component {
     ));
 
     return (
-      <div className="Walks hide Pages container">
-        <div className="walk-page-header row justify-content-center">
-          <img className="dog-banner" src="https://www.astepbeyond.co.uk/wp-content/uploads/2017/06/dog-walking-page-banner.jpg" alt="dogs walking around being cool pups"></img>
+      <div className="Walks Pages hide container">
+        <div className="walk-page-header">
+           <img className="dog-banner" src="https://www.astepbeyond.co.uk/wp-content/uploads/2017/06/dog-walking-page-banner.jpg" alt="dogs walking around being cool pups"></img>
           <h2 className="walk-header">WALKS</h2>
         </div>
         <div className="walk-page-button row justify-content-end">
