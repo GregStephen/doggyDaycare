@@ -13,29 +13,29 @@ What you see on page load before you log in to the app
 #### Home Page
 What you see when you log in to the App, you are able to check a dog out/ fire an employee
 You are also able to add employees or dogs
-[Home Page](./assets/screenshots/home_page.png)
+![Home Page](./assets/screenshots/home_page.png)
 
 #### Add Dog
 This is the form that pops up when you try to add a dog
-[Add Dog](./assets/screenshots/add_dog.png)
+![Add Dog](./assets/screenshots/add_dog.png)
 
 #### Add Employee
 This is the form that pops up when you try to add an employee, notice the verification that appears
-[Add Employee](./assets/screenshots/add_employee.png)
+![Add Employee](./assets/screenshots/add_employee.png)
 
 #### Walks Page
 This is the page that shows all the walks scheduled.
 Here you can add a walk, delete walks or edit walks
-[Walk Page](./assets/screenshots/walk_page.png)
+![Walk Page](./assets/screenshots/walk_page.png)
 
 #### Add Walks
 This is the form that pops up when you want to add a walk
-[Add Walk](./assets/screenshots/add_walk.png)
+![Add Walk](./assets/screenshots/add_walk.png)
 
 #### Edit Walks
 This is the form that pops up when you want to edit walks
 The pictures change when you select a new employee or dog
-[Edit Walks](./assets/screenshots/edit_walk.png)
+![Edit Walks](./assets/screenshots/edit_walk.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
