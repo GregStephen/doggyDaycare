@@ -8,7 +8,7 @@ You have the ability to check dogs in, check them out, hire employees, fire them
 
 #### Landing Page
 What you see on page load before you log in to the app
-[Landing Page](./assets/screenshots/landing_page.png)
+![Landing Page](./assets/screenshots/landing_page.png)
 
 #### Home Page
 What you see when you log in to the App, you are able to check a dog out/ fire an employee
